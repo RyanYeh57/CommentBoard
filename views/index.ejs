@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <title>留言系統</title>
+</head>
+<body>
+  <section class="container">
+    <form action="/comment" class="form has-background-color-gary">
+      <h3 class="title" >輸入留言</h3>
+      <div class="block">暱稱<input class="input is-normal" type="text" name="name"></div> 
+      <div class="block">留言<textarea class="textarea" rows="10" name="comment"></textarea></div>
+      <button class="button is-primary">送出留言</button>
+    </form>
+    <hr>
+    <h1 class="title" >留言板</h1>
+    <% if (data) { %>
+      <% for(i=0;i<data.length;i++) { %>
+        <h3 class="title is-5"><%= data[i].name %></h3>
+        <p><%= data[i].comment %></p>
+        <hr>
+      <% } %>
+    <% } %>
+  </section>
+</body>
+</html>
