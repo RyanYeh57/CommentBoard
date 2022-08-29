@@ -10,10 +10,11 @@
 <body>
   <section class="container">
     <form action="/comment" class="form has-background-color-gary">
-      <h3 class="title" >輸入留言</h3>
-      <div class="block">暱稱<input class="input is-normal" type="text" name="name"></div> 
-      <div class="block">留言<textarea class="textarea" rows="10" name="comment"></textarea></div>
+      <h3 class="title">輸入留言</h3>
+      <div class="block">暱稱：<%= name %></div> 
+      <div class="block">留言：<textarea class="textarea" rows="10" name="comment"></textarea></div>
       <button class="button is-primary">送出留言</button>
+      <a href="/logout" class="button is-danger">登出</a>
     </form>
     <hr>
     <h1 class="title" >留言板</h1>
