@@ -2,6 +2,7 @@
 const mongo = require("mongodb");
 const uri = "mongodb+srv://ryan:ryan123@cluster0.fqfkhlz.mongodb.net/test";
 const client = new mongo.MongoClient(uri)
+const dayjs = require("dayjs")
 let db = null;
 client.connect(async function(err){
   if (err){
@@ -94,9 +95,14 @@ app.get("/logout",function(req, res){
 app.get("/comment", async function(req, res){
   const name = req.session.member.name;
   const comment = req.query.comment;
+  const now = dayjs(new Date()).format('YYYY-MM-DD HH:mm:ss');
   const collection = db.collection("comments");
+  if(!req.session.member){
+    res.redirect("/");
+    return;
+  };
   let result = await collection.insertOne({
-    name: name, comment: comment
+    name: name, comment: comment ,now: now
   });
   res.redirect("/member",);
 });
